@@ -4,7 +4,11 @@
 
 # There are a list of pre-shared keys indexed
 # by chef environment in the vpn_keys data bag.
-tunnel_keys = data_bag_item('strongswanaws', 'tunnel_keys')
+if node['awsstrongswan']['databag_encrypted']
+  tunnel_keys = data_bag_item('strongswanaws', 'tunnel_keys')
+else
+  tunnel_keys = Chef::EncryptedDataBagItem.load('strongswanaws', 'tunnel_keys').to_hash
+end
 key_configs = tunnel_keys['key_configs']
 
 

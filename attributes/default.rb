@@ -2,6 +2,7 @@
 
 # Makes StrongSwan logs debug notices
 default['awsstrongswan']['debug'] = false
+default['awsstrongswan']['databag_encrypted'] = false
 
 # A list of IPSec tunnel configuration info
 # Example:
