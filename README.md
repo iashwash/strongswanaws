@@ -41,12 +41,13 @@ This cookbook does not depend on any other cookbooks.
 This cookbook uses the following attributes.
 
 ```
-.-------------------------------------------------------------------------------------------.
-| Key                          | Type    | Description                           | Default  |
-|-------------------------------------------------------------------------------------------|
-| ['awsstrongswan']['debug']   | Boolean | Cause charon to log debug information | true     |
-| ['awsstrongswan']['tunnels'] | Array   | Tunnels to which to connect           | empty [] |
-'-------------------------------------------------------------------------------------------'
+.-------------------------------------------------------------------------------------------------------.
+| Key                                      | Type    | Description                           | Default  |
+|-------------------------------------------------------------------------------------------------------|
+| ['awsstrongswan']['debug']               | Boolean | Cause charon to log debug information | true     |
+| ['awsstrongswan']['databag_encrypted']   | Boolean | Cause charon to log debug information | false    |
+| ['awsstrongswan']['tunnels']             | Array   | Tunnels to which to connect           | empty [] |
+'-------------------------------------------------------------------------------------------------------'
 ```
 
 These attributes can be set as below.
@@ -57,6 +58,16 @@ These attributes can be set as below.
 "default_attributes": {
   "strongswanaws": {
     "debug": true
+  }
+}
+```
+
+`['awsstrongswan']['databag_encrypted']`:
+
+```json
+"default_attributes": {
+  "strongswanaws": {
+    "databag_encrypted": true
   }
 }
 ```
@@ -102,6 +113,8 @@ The item `tunnel_keys` should look as shown below.
 ```
 
 There may be zero or more tunnels in the `tunnel_keys` list.
+
+If you choose to encrypt your data bag, set the `['awsstrongswan']['databag_encrypted']` to true.
 
 ## Recipes
 
